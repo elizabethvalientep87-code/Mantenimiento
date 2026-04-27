@@ -1,0 +1,641 @@
+/* Variables de color (fáciles de ajustar) */
+:root{
+  --wine: #0f0f6b;        /* color base vino oscuro */
+  --red:  #2531b3;        /* rojo secundario */
+  --rose: #2e218e;        /* tono intermedio */
+  --bg:   #ffffff;        /* fondo principal */
+  --muted:#f4f4f6;        /* gris claro */
+  --gray: #6c6c6c;        /* texto secundario */
+  --dark: #222222;        /* texto principal */
+  --accent: #d9a0a6;      /* acento suave */
+  --max-width: 1100px;
+  --container-padding: 1rem;
+}
+
+/* Reset ligero */
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  margin:0;
+  padding-top: 80px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--dark);
+  background:var(--bg);
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+}
+
+.container{
+  width:100%;
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Header */
+.site-header{
+  background: linear-gradient(90deg, rgba(15, 36, 107, 0.95), rgba(44, 37, 179, 0.95));
+  color:var(--bg);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  position: sticky;
+  top:0;
+  z-index:1000;
+  position: relative; 
+    width: 100%;
+    z-index: 1000;
+}
+.header-inner{
+  display:flex;
+  gap:1rem;
+  align-items:center;
+  justify-content:space-between;
+  padding:0.6rem 0;
+}
+
+/* Brand */
+.brand{
+  display:flex;
+  gap:0.6rem;
+  align-items:center;
+  text-decoration:none;
+  color:var(--bg);
+}
+.brand-mark{
+  width:44px;
+  height:44px;
+  background:var(--bg);
+  color:var(--wine);
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+.brand-title{font-weight:700; display:block;}
+.brand-sub{font-size:0.8rem; color: rgba(255,255,255,0.85); display:block;}
+
+/* Nav */
+.main-nav ul{
+  list-style:none;
+  display:flex;
+  gap:0.6rem;
+  margin:0;
+  padding:0;
+}
+.main-nav a{
+  color:var(--bg);
+  text-decoration:none;
+  padding:0.6rem 0.8rem;
+  border-radius:6px;
+  display:inline-block;
+  font-weight:600;
+}
+.main-nav a:hover,
+.main-nav a:focus{
+  background: rgba(255,255,255,0.07);
+  outline:none;
+}
+
+/* Toggle (mobile) */
+.nav-toggle{
+  display:none;
+  background:transparent;
+  border:0;
+  color:var(--bg);
+}
+.hamburger{
+  width:24px;
+  height:2px;
+  background:var(--bg);
+  display:block;
+  position:relative;
+}
+.hamburger::before,
+.hamburger::after{
+  content:'';
+  position:absolute;
+  left:0;
+  width:24px;
+  height:2px;
+  background:var(--bg);
+}
+.hamburger::before{ top:-7px }
+.hamburger::after{ top:7px }
+
+/* Hero */
+.hero{
+  padding:3rem 0;
+  background: linear-gradient(180deg, rgba(234,226,227,0.08), transparent 60%);
+}
+.hero-inner{
+  display:flex;
+  gap:2rem;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.hero-text{max-width:640px}
+.hero h1{font-size:2rem; margin:0 0 0.6rem; color:var(--wine)}
+.lead{color:var(--gray); margin-bottom:1rem}
+.hero-cta .btn{margin-right:0.6rem}
+
+/* Buttons */
+.btn{
+  display:inline-block;
+  padding:0.6rem 1rem;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+  border:2px solid transparent;
+  cursor:pointer;
+}
+.btn-primary{
+  background:var(--wine);
+  color:var(--bg);
+  border-color: var(--wine);
+}
+.btn-primary:hover{ background:var(--red); border-color:var(--red) }
+.btn-outline{
+  background:transparent;
+  color:var(--wine);
+  border-color:var(--wine);
+}
+.btn-outline:hover{ background:rgba(107,15,26,0.06) }
+
+/* Cards / features */
+.section{padding:2rem 0; margin-top: 20px;}
+.section-muted{background:var(--muted)}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-top:1rem;
+}
+.feature-card{
+  background:var(--bg);
+  border:1px solid rgba(0,0,0,0.06);
+  padding:1rem;
+  border-radius:8px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.04);
+}
+/* Ajuste para el cuadro contenedor */
+.card-sample {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.06);
+  color: var(--wine);
+  
+  /* Añadimos esto para asegurar que no crezca de más */
+  max-width: 300px; /* Puedes ajustar este ancho según prefieras */
+  text-align: center;
+}
+
+/* Ajuste específico para la imagen dentro del cuadro */
+.card-sample img {
+  width: 100%;       /* Obliga a la imagen a ocupar el ancho del cuadro */
+  height: auto;      /* Mantiene la proporción para que no se vea estirada */
+  max-height: 200px; /* Limita la altura para que no ocupe toda la pantalla */
+  object-fit: cover; /* Recorta ligeramente la imagen si es necesario para que encaje bien */
+  border-radius: 4px;/* Opcional: para que la imagen también tenga bordes redondeados */
+  margin-top: 10px;  /* Espacio entre el título y la imagen */
+}
+/* --- ESTILOS REUTILIZABLES PARA IMÁGENES EN PANELES --- */
+
+/* Contenedor para centrar y dar espacio */
+.img-container-responsive {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0; /* Espacio arriba y abajo */
+}
+
+/* --- NUEVOS ESTILOS PARA IMÁGENES EN PANELES (CORREGIDO) --- */
+
+/* 1. El contenedor padre: se asegura de que haya espacio */
+.img-container-responsive {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centrado horizontal perfecto */
+  padding: 3rem 0;        /* Espacio generoso arriba y abajo (le da "respiro") */
+  margin: 0;              /* Eliminamos márgenes para evitar conflictos */
+}
+
+/* 2. El wrapper: controla el ancho máximo */
+.image-wrapper {
+  width: 100%;
+  max-width: 600px; /* Aumentamos ligeramente para que se vea mejor (puedes ajustar) */
+}
+
+/* 3. La imagen*/
+.img-panel-control {
+  width: 100%;       /* Ocupa el 100% de los 800px del wrapper */
+  height: auto;      /* Mantiene la proporción */
+  
+  /* Estilo visual (Borde y sombras) - SE MANTIENEN */
+  border: 4px solid #fff; 
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+  outline: 1px solid rgba(0,0,0,0.05);
+  
+  /* Eliminamos márgenes directos en la imagen */
+  margin: 0;
+}
+
+/* Footer */
+.site-footer{
+  background: #fafafa;
+  color:var(--gray);
+  padding:2rem 0 3rem;
+  border-top:1px solid rgba(0,0,0,0.04);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:1rem;
+}
+.footer-links{list-style:none; padding:0; margin:0}
+.footer-links a{text-decoration:none; color:var(--gray)}
+
+/* Utilities */
+.small{font-size:0.85rem; color:var(--gray)}
+
+/* Responsive */
+@media (max-width:900px){
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{flex-direction:column; align-items:flex-start}
+}
+@media (max-width:700px){
+  .grid-3{grid-template-columns:1fr}
+  .nav-toggle{display:inline-block}
+  .main-nav{position: absolute; top:64px; right:12px; background: linear-gradient(180deg, rgba(35, 15, 107, 0.98), rgba(58, 37, 179, 0.98)); border-radius:8px; padding:0.6rem; display:none; min-width:200px}
+  .main-nav ul{flex-direction:column}
+  .main-nav a{display:block; padding:0.6rem 1rem}
+  .main-nav.open{display:block}
+}
+
+/* Formulario */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-card {
+  background: var(--bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.form-card label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--wine);
+}
+
+.form-card input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 0.3rem;
+  font-size: 1rem;
+}
+
+.full {
+  width: 100%;
+  margin-top: 1.4rem;
+}
+
+/* Mensajes */
+.alert {
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.alert.error {
+  background: #ffdfdf;
+  color: #7a1414;
+  border-left: 5px solid #b3252d;
+}
+
+.alert.success {
+  background: #e5ffe5;
+  color: #146b14;
+  border-left: 5px solid #2ea32e;
+}
+
+/* Contenedor principal */
+.login-container {
+    width: 350px;
+    margin: 80px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(6, 0, 90, 0.3);
+    text-align: center;
+}
+
+/* Título */
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #00067b; /* vino */
+    font-size: 24px;
+}
+
+/* Inputs */
+label {
+    display: block;
+    text-align: left;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Botón */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #12009b; /* rojo vino fuerte */
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #002bb8;
+}
+
+/* Link inferior */
+.link {
+    margin-top: 15px;
+}
+
+.link a {
+    color: #00047b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* ======== MENÚ SUPERIOR ======== */
+.menu {
+    background: #06007b; /* vino */
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu .logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu ul li a:hover {
+    text-decoration: underline;
+}
+
+/* ======== CONTENIDO ======== */
+.contenido {
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.tarjetas {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 20px;
+    width: 280px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(90, 0, 0, 0.3);
+}
+
+.card h3 {
+    color: #9b0033;
+}
+
+.card p {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #27009b;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    background: #000cb8;
+}
+
+
+/* ======== CONTENEDORES DE ERRORES ======== */
+.error-container {
+    width: 350px;
+    margin: 80px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(8, 0, 120, 0.4);
+}
+
+.error-container h2 {
+    color: #9b0033;
+    margin-bottom: 15px;
+}
+
+.error-container p {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #22009b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    background: #0300b8;
+}
+
+
+/* Tabla */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+}
+
+.tabla th {
+    background: #0e007b;
+    color: white;
+    padding: 10px;
+}
+
+.tabla td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Botones dentro de la tabla */
+.btnTabla {
+    padding: 5px 8px;
+    text-decoration: none;
+    background: #1c009b;
+    color: white;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.btnTabla:hover {
+    background: #0900b8;
+}
+
+.editar {
+    background: #555;
+}
+
+.eliminar {
+    background: #0006b8;
+}
+
+/* ===== MENU DEL CLIENTE ===== */
+
+.menu {
+    width: 100%;
+    background-color: #0e104c; /* vino */
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.menu-logo h2 {
+    margin: 0;
+    color: #ffffff;
+}
+
+.menu-links a {
+    color: #ffffff;
+    margin-left: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.menu-links a:hover {
+    color: #6b7fff; /* rojo claro */
+}
+
+.btn-salir {
+    background-color: #352082; 
+    padding: 7px 12px;
+    border-radius: 5px;
+}
+
+.btn-salir:hover {
+    background-color: #2a2ab3;
+}
+
+
+/*--------------AGREGAR ARTICULOS--------------*/
+.contenedor {
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+h1 {
+    color: #0e0f4c;
+}
+
+.formulario label {
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.btn {
+    background-color: #100e4c;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2a2cb3;
+}
